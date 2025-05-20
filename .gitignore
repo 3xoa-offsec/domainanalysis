@@ -1,0 +1,9 @@
+*.xlsx
+*.pyc
+__pycache__/
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+*.log

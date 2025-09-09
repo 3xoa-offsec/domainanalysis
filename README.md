@@ -20,7 +20,7 @@ Input file containing a list of domains/subdomains (one per line).
 
 Installation
 
-Clone this repository:git clone https://github.com/your-username/domain-analysis.git
+Clone this repository:git clone https://github.com/malik9545/domain-analysis.git
 cd domain-analysis
 
 

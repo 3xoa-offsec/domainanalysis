@@ -1,66 +1,150 @@
-Domain Analysis Tool
-Overview
-The Domain Analysis Tool is a Python script designed to perform comprehensive network reconnaissance on a list of domains or subdomains. It gathers DNS records, scans for open ports, checks HTTP/HTTPS headers, scans JavaScript files for potential secrets, and verifies SSL certificates. Results are exported to an Excel file for easy analysis.
-Features
+# 🚀 Domain Analysis Tool
 
-DNS Enumeration: Retrieves A, AAAA, CNAME, MX, NS, and TXT records.
-Port Scanning: Checks for open ports from a predefined list (e.g., HTTP, HTTPS, FTP).
-HTTP/HTTPS Analysis: Captures status codes, headers, and checks for directory listing exposure.
-JavaScript Secret Scanning: Scans linked JavaScript files for potential secrets (e.g., API keys, passwords) using regex patterns.
-SSL Certificate Checking: Retrieves issuer, expiry date, and status of SSL certificates.
-Excel Output: Generates a detailed report in .xlsx format with all findings.
+**Comprehensive reconnaissance for domains & subdomains — DNS, ports, HTTP headers, JS secret scanning, SSL checks, and Excel reports.**
 
-Requirements
+---
 
-Python 3.6+
-Required Python packages:pip install dnspython requests openpyxl beautifulsoup4
+![Domain Analysis](https://raw.githubusercontent.com/3xoa-offsec/domainanalysis/master/.placeholder.png)
 
+> A fast, extensible Python script to help security engineers and bug bounty hunters collect domain intelligence and export results into a single .xlsx report.
 
-Input file containing a list of domains/subdomains (one per line).
+---
 
-Installation
+## 🔍 Key Features
 
-Clone this repository:git clone https://github.com/malik9545/domain-analysis.git
-cd domain-analysis
+* **DNS Enumeration** — A, AAAA, CNAME, MX, NS, TXT records
+* **Port Scanning** — Check common ports (HTTP, HTTPS, FTP, SSH, etc.)
+* **HTTP / HTTPS Analysis** — Status codes, headers, directory listing detection
+* **JavaScript Secret Scanning** — Crawl linked `.js` files and flag probable secrets via regex
+* **SSL Certificate Checking** — Issuer, validity, expiry, and basic health
+* **Excel Export** — Clean, reviewable `.xlsx` output for triage and reporting
 
+---
 
-Install dependencies:pip install -r requirements.txt
+## ⚙️ Requirements
 
-Or manually install:pip install dnspython requests openpyxl beautifulsoup4
+* Python 3.6+
+* Recommended packages (install with pip):
 
+```bash
+pip install dnspython requests openpyxl beautifulsoup4
+```
 
+Or install from bundled `requirements.txt`:
 
-Usage
+```bash
+pip install -r requirements.txt
+```
 
-Prepare a text file (e.g., domains.txt) with one domain or subdomain per line.
-Run the script:python domain_analysis.py
+---
 
+## 🧰 Installation
 
-Follow the prompts:
-Enter the input file name (e.g., domains.txt).
-Enter the output Excel file name (e.g., results.xlsx).
-Specify the maximum number of concurrent threads (default: 10).
+```bash
+git clone https://github.com/3xoa-offsec/domainanalysis.git
+cd domainanalysis
+```
 
+---
 
-The script will process each domain and generate an Excel file with the results.
+## ▶️ Quick Start
 
-Example
-Input file (domains.txt):
+1. Create a text file with one domain or subdomain per line (e.g. `domains.txt`):
+
+```
 example.com
 sub.example.com
+```
 
-Run the script:
+2. Run the tool:
+
+```bash
 python domain_analysis.py
+```
 
-Output:An Excel file (e.g., results.xlsx) containing columns for DNS records, open ports, HTTP/HTTPS details, SSL certificate info, potential issues, and JavaScript secret findings.
-Notes
+3. Follow interactive prompts:
 
-Secret Scanning: The regex patterns for secret detection are illustrative and may produce false positives. Refine them for production use.
-SSL Verification: The script suppresses InsecureRequestWarning for self-signed certificates during HTTP/HTTPS requests.
-Threading: Adjust the number of threads based on your system's capabilities to avoid timeouts or excessive load.
-Permissions: Ensure you have permission to scan the target domains, as unauthorized scanning may violate terms of service or laws.
+* Input file name (e.g., `domains.txt`)
+* Output Excel file name (e.g., `results.xlsx`)
+* Max concurrent threads (default: 10)
 
-License
-This project is licensed under the MIT License.
-Disclaimer
-This tool is for educational and authorized use only. Use responsibly and ensure compliance with applicable laws and regulations.
+4. Open the generated `results.xlsx` to review findings.
+
+---
+
+## 📝 Output
+
+The Excel report contains organized sheets / columns for:
+
+* DNS records
+* Open ports detected
+* HTTP/HTTPS details (status, headers, directory listing warnings)
+* SSL certificate metadata (issuer, expiry, status)
+* JavaScript files scanned and any **potential** secrets found
+* Notes / potential issues
+
+---
+
+## 🛡️ Security & Ethics
+
+This tool is intended **only** for authorized testing, internal security assessments, or educational use. Unauthorized scanning of systems you do not own or have explicit permission to test may be illegal. Always get written permission before scanning third-party infrastructure.
+
+---
+
+## ⚠️ Notes & Limitations
+
+* **False Positives:** The JS secret detection uses illustrative regexes and may return false positives. Validate findings manually before action.
+* **SSL Verification:** The script suppresses `InsecureRequestWarning` when encountering self-signed certs. Interpret such results carefully.
+* **Threading:** Increasing thread count speeds up scans but can overload networks or cause timeouts. Tune according to your environment.
+* **Permissions:** Respect `robots.txt` and the target's policy when crawling resources.
+
+---
+
+## 🛠️ Customization Tips
+
+* Extend the port list for custom services.
+* Improve regex patterns for secret scanning to reduce false positives.
+* Add output filters or a CLI flag wrapper for non-interactive batch use.
+
+---
+
+## 🧪 Example
+
+Interactive run (example):
+
+```
+$ python domain_analysis.py
+Enter input file: domains.txt
+Enter output file: results.xlsx
+Max threads [10]: 20
+Processing 12 domains...
+Done. Results saved to results.xlsx
+```
+
+---
+
+## 🤝 Contributing
+
+Contributions, suggestions, and bug reports are welcome:
+
+1. Fork the repo
+2. Create a feature branch
+3. Open a pull request
+
+If you add major features (e.g., improved scanning engine, better parsing), include tests and documentation.
+
+---
+
+## 📜 License
+
+This project is released under the **MIT License**. See `LICENSE` for details.
+
+---
+
+## 🙋 Author
+
+3xoa-offsec — Open-source offensive tooling and utilities.
+
+---
+
+> Want this README to include a screenshot, badges, or a usage GIF? Tell me what image/files you have and I’ll embed them.

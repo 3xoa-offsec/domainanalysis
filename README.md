@@ -4,7 +4,6 @@
 
 ---
 
-![Domain Analysis](https://raw.githubusercontent.com/3xoa-offsec/domainanalysis/master/.placeholder.png)
 
 > A fast, extensible Python script to help security engineers and bug bounty hunters collect domain intelligence and export results into a single .xlsx report.
 
@@ -147,4 +146,3 @@ This project is released under the **MIT License**. See `LICENSE` for details.
 
 ---
 
-> Want this README to include a screenshot, badges, or a usage GIF? Tell me what image/files you have and I’ll embed them.
